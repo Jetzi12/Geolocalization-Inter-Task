@@ -1,7 +1,5 @@
 package com.companyCo.Geolocalization.Authentication;
 
-import com.companyCo.Geolocalization.Model.Users;
-import com.companyCo.Geolocalization.Repository.GeoRepository;
 import org.apache.log4j.BasicConfigurator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,25 +16,21 @@ import java.util.Collections;
 
 @Configuration
 public class Security extends WebSecurityConfigurerAdapter {
-
-    private enum privilage {
-        ADMIN, USER, STAFF
-    }
-
+    private String wholeListEndPoint = "/localization/wholeList";
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser(
                         new User("admin",
                                 passwordEncoder().encode("admin"),
-                                Collections.singleton(new SimpleGrantedAuthority("ROLE_" + privilage.ADMIN))));
+                                Collections.singleton(new SimpleGrantedAuthority("ROLE_" + RolesAndPriviliges.roles.ADMIN))));
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/localization/wholeList").hasRole(privilage.ADMIN.toString())
+                .antMatchers(HttpMethod.GET,wholeListEndPoint).hasRole(RolesAndPriviliges.roles.ADMIN.toString())
                 .and()
                 .formLogin().permitAll();
     }

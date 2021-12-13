@@ -20,7 +20,7 @@ public class GeoConfiguration {
     @Bean
     CommandLineRunner commandLineRunner(GeoRepository geoRepository){
         return args -> {
-            Users user = new Users(UUID.randomUUID().toString(),"mike","mike@gmail.com","12fweg43"); //ToDO STALEJ  nale[iej liquidbase
+            Users user = new Users(UUID.randomUUID().toString(),"mike","mike@gmail.com","12fweg43");
             Users user2 = new Users(UUID.randomUUID().toString(),"mikeing","mikeing@gmail.com","124we3");
             Users user3 = new Users(UUID.randomUUID().toString(),"miked","miked@gmail.com","124r3");
             geoRepository.saveAll(Stream.of(user,user2,user3).collect(Collectors.toList()));
