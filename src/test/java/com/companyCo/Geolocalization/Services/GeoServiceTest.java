@@ -68,7 +68,7 @@ class GeoServiceTest {
         assertThat(geoService.getUsers().size()).isNotZero();
 
     }
-
+        
     @Test
     void canAddNewUser() {
         //given
