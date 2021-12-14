@@ -21,8 +21,10 @@ Project is created with:
 ## Setup
 To run this project it's necessary to create postgre database and fill properties:
 
+```
 spring.datasource.url=jdbc:postgresql://localhost:5432/**** - fill **** with name of database, port commonly is 5432
 spring.datasource.username=**** - fill **** with user name
 spring.datasource.password=**** - fill **** password if necessary
 
+```
 Next step is just run project.
